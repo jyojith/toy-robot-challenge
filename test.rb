@@ -10,7 +10,7 @@ class TestCommands < Test::Unit::TestCase
     @commands_4 = ["PLACE 5,5,NORTH","MOVE","MOVE","REPORT"]
   end
 
-  def execute(commands)
+  def execute_command(commands)
     @robot = Robot.new()
     for command in commands do
       @robot.read_command(command)
@@ -23,10 +23,10 @@ class TestCommands < Test::Unit::TestCase
   end
 
   def test_commands
-    assert_equal("Output: 0,1,NORTH", execute(@commands_1))
-    assert_equal("Output: 0,0,WEST", execute(@commands_2))
-    assert_equal("Output: 3,3,NORTH", execute(@commands_3))
-    assert_equal("Not on board", execute(@commands_4))
+    assert_equal("Output: 0,1,NORTH", execute_command(@commands_1))
+    assert_equal("Output: 0,0,WEST", execute_command(@commands_2))
+    assert_equal("Output: 3,3,NORTH", execute_command(@commands_3))
+    assert_equal("Not on board", execute_command(@commands_4))
   end
 
 end
